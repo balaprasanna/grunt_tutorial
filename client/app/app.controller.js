@@ -14,9 +14,9 @@
         self.numQuestions = 0;
 
         self.quiz = {
-
+            
         };
-
+        console.log("comments..");
         self.finalanswer = {
             id: 0,
             value: "",
@@ -81,12 +81,16 @@
         self.getNext = function () {
             self.finalanswer.message = ""; //hide the status message
             self.finalanswer.value = ""; //deselect the radio button selection from previous choice
+            self.finalanswer.comments = ""; // reset remarks.
+            
             self.submitDisabled = false; //enable the Submit button (for the next question)
             $http.get("/popquizes")
             .then(function (result) {
                 console.log(result);
                 self.quiz = result.data;
                 self.qnNum++; //increase the question serial number
+                self.finalanswer.value = "";
+
             }).catch(function (e) {
                 console.log(e);
             });
