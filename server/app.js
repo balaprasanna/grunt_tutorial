@@ -37,8 +37,9 @@ app.get("/popquizes", function (req, res) {
     //can only send a question if there is at least one question in the array
     if (questions.length > 0) {
         var question = questions.pop(); //send the last question
-        delete question.correctanswer;
-        res.json(question);
+        var cloneQuestion = Object.assign({}, question);
+        delete cloneQuestion.correctanswer;
+        res.json(cloneQuestion);
     }
 });
 
@@ -47,6 +48,10 @@ app.post("/submit-quiz", function (req, res) {
     console.log("Received user object " + JSON.stringify(req.body));
     var quiz = req.body;
     var checking = quizes[quiz.id];
+    console.log(checking);
+    console.log(checking.correctanswer);
+    console.log(quiz.value);
+    
     if (checking.correctanswer == parseInt(quiz.value)) {
         console.log("CORRECT !");
         quiz.isCorrect = true;

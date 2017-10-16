@@ -28,6 +28,7 @@
             $http.get("/numQuestions")
             .then(function (result) {
                 console.log(result);
+                console.log(result.data);
                 self.numQuestions = result.data;
             }).catch(function (e) {
                 console.log(e);
