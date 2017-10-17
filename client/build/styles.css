@@ -6,3 +6,10 @@
     border-bottom: thin solid #ddd;
     padding: 20px 0;
 }
+/* Body css */
+body {
+    border: 1px salmon solid
+}
+body {
+    color: red
+}
